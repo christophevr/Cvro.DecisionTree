@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cvro.DecisionTree", "Cvro.DecisionTree\Cvro.DecisionTree.csproj", "{487466DB-4B9F-411E-BD1C-D0D8BB5B72C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecisionTree", "Cvro.DecisionTree\DecisionTree.csproj", "{487466DB-4B9F-411E-BD1C-D0D8BB5B72C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cvro.DecisionTree.Tests", "Cvro.DecisionTree.Tests\Cvro.DecisionTree.Tests.csproj", "{746D6025-AF70-483F-B8CF-1EBA1523809C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecisionTree.Tests", "Cvro.DecisionTree.Tests\DecisionTree.Tests.csproj", "{746D6025-AF70-483F-B8CF-1EBA1523809C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecisionTree.Visualizer", "Cvro.DecisionTree.Visualizer\DecisionTree.Visualizer.csproj", "{010C51B7-A144-476B-A941-5B84DC2C0763}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{746D6025-AF70-483F-B8CF-1EBA1523809C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{746D6025-AF70-483F-B8CF-1EBA1523809C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{746D6025-AF70-483F-B8CF-1EBA1523809C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{010C51B7-A144-476B-A941-5B84DC2C0763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{010C51B7-A144-476B-A941-5B84DC2C0763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{010C51B7-A144-476B-A941-5B84DC2C0763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{010C51B7-A144-476B-A941-5B84DC2C0763}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

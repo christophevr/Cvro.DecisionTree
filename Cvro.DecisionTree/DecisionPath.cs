@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Cvro.DecisionTree
+namespace DecisionTree
 {
     public class DecisionPath
     {

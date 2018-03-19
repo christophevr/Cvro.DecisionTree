@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DecisionTree")]
+[assembly: AssemblyTitle("DecisionTree.Visualizer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DecisionTree")]
+[assembly: AssemblyProduct("DecisionTree.Visualizer")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("487466db-4b9f-411e-bd1c-d0d8bb5b72c2")]
+[assembly: Guid("010c51b7-a144-476b-a941-5b84dc2c0763")]
 
 // Version information for an assembly consists of the following four values:
 //

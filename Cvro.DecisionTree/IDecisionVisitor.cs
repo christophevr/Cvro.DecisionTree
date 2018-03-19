@@ -1,4 +1,4 @@
-﻿namespace Cvro.DecisionTree
+﻿namespace DecisionTree
 {
     public interface IDecisionVisitor<TInput, TOutput>
     {

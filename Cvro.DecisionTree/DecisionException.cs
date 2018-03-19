@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cvro.DecisionTree
+namespace DecisionTree
 {
     public class DecisionException : Exception
     {

@@ -8,8 +8,8 @@
     <ProjectGuid>{746D6025-AF70-483F-B8CF-1EBA1523809C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cvro.DecisionTree.Tests</RootNamespace>
-    <AssemblyName>Cvro.DecisionTree.Tests</AssemblyName>
+    <RootNamespace>DecisionTree.Tests</RootNamespace>
+    <AssemblyName>DecisionTree.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -73,9 +73,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cvro.DecisionTree\Cvro.DecisionTree.csproj">
+    <ProjectReference Include="..\Cvro.DecisionTree\DecisionTree.csproj">
       <Project>{487466DB-4B9F-411E-BD1C-D0D8BB5B72C2}</Project>
-      <Name>Cvro.DecisionTree</Name>
+      <Name>DecisionTree</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

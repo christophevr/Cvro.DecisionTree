@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections;
 
-namespace Cvro.DecisionTree
+namespace DecisionTree
 {
     public abstract class Decision<TInput, TOutput>
     {

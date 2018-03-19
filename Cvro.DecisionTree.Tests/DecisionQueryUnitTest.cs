@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 
-namespace Cvro.DecisionTree.Tests
+namespace DecisionTree.Tests
 {
     [TestFixture]
     public class DecisionQueryUnitTest

@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cvro.DecisionTree.Tests
+namespace DecisionTree.Tests
 {
     [TestFixture]
     public class DecisionResultUnitTest

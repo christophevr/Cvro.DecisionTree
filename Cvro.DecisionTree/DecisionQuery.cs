@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Cvro.DecisionTree
+namespace DecisionTree
 {
     public class DecisionQuery<TInput, TOutput> : Decision<TInput, TOutput>
     {

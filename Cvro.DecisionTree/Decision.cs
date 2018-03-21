@@ -2,12 +2,12 @@
 
 namespace DecisionTree
 {
-    public abstract class Decision<TInput, TOutput>
+    public abstract class Decision<TIn, TOut>
     {
-        public abstract TOutput Evaluate(TInput input);
-        public abstract void Accept(IDecisionVisitor<TInput, TOutput> visitor);
-        public abstract Tuple<TOutput, DecisionPath> EvaluateWithPath(TInput input, DecisionPath decisionPath);
-        public virtual Tuple<TOutput, DecisionPath> EvaluateWithPath(TInput input)
+        public abstract TOut Evaluate(TIn input);
+        public abstract void Accept(IDecisionVisitor<TIn, TOut> visitor);
+        public abstract Tuple<TOut, DecisionPath> EvaluateWithPath(TIn input, DecisionPath decisionPath);
+        public virtual Tuple<TOut, DecisionPath> EvaluateWithPath(TIn input)
         {
             return EvaluateWithPath(input, new DecisionPath());
         }

@@ -1,8 +1,8 @@
 ﻿namespace DecisionTree
 {
-    public interface IDecisionVisitor<TInput, TOutput>
+    public interface IDecisionVisitor<TIn, TOut>
     {
-        void Visit(DecisionQuery<TInput, TOutput> decisionQuery);
-        void Visit(DecisionResult<TInput, TOutput> decisionResult);
+        void Visit(DecisionQuery<TIn, TOut> decisionQuery);
+        void Visit(DecisionResult<TIn, TOut> decisionResult);
     }
 }

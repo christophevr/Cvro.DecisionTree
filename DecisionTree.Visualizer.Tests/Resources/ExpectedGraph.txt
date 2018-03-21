@@ -1,0 +1,9 @@
+digraph{
+"employee => (employee.YearsEmployed < 5) (6303833)"->"employee => new BonusCalculation() {Bonus = Convert((employee.YearsEmployed * 100))} (40452378)"["color"="green","label"="True"];
+"employee => new BonusCalculation() {Bonus = Convert((employee.YearsEmployed * 100))} (40452378)"["fillcolor"="yellow","style"="filled"];
+"employee => (employee.YearsEmployed < 5) (6303833)"->"employee => (employee.YearsEmployed < 10) (1669504)"["label"="False","color"="red"];
+"employee => (employee.YearsEmployed < 10) (1669504)"->"employee => new BonusCalculation() {Bonus = (Convert(employee.YearsEmployed) * 200)} (54963967)"["label"="True","color"="green"];
+"employee => new BonusCalculation() {Bonus = (Convert(employee.YearsEmployed) * 200)} (54963967)"["style"="filled","fillcolor"="yellow"];
+"employee => (employee.YearsEmployed < 10) (1669504)"->"employee => new BonusCalculation() {Bonus = (Convert(employee.YearsEmployed) * 300)} (50108275)"["label"="False","color"="red"];
+"employee => new BonusCalculation() {Bonus = (Convert(employee.YearsEmployed) * 300)} (50108275)"["fillcolor"="yellow","style"="filled"];
+}

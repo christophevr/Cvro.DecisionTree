@@ -3,11 +3,11 @@ using System.Linq.Expressions;
 
 namespace DecisionTree
 {
-    public class DecisionResult<TInput, TOutput> : Decision<TInput, TOutput>
+    public class DecisionResult<TIn, TOut> : Decision<TIn, TOut>
     {
-        public Expression<Func<TInput, TOutput>> CreateResult { get; set; }
+        public Expression<Func<TIn, TOut>> CreateResult { get; set; }
 
-        public override TOutput Evaluate(TInput input)
+        public override TOut Evaluate(TIn input)
         {
             AssertCanEvaluate();
 
@@ -15,15 +15,20 @@ namespace DecisionTree
             return createResult.Invoke(input);
         }
 
-        public override Tuple<TOutput, DecisionPath> EvaluateWithPath(TInput input, DecisionPath decisionPath)
+        public override Tuple<TOut, DecisionPath> EvaluateWithPath(TIn input, DecisionPath decisionPath)
         {
             var output = Evaluate(input);
-            return new Tuple<TOutput, DecisionPath>(output, decisionPath);
+            return new Tuple<TOut, DecisionPath>(output, decisionPath);
         }
 
-        public override void Accept(IDecisionVisitor<TInput, TOutput> visitor)
+        public override void Accept(IDecisionVisitor<TIn, TOut> visitor)
         {
             visitor.Visit(this);
+        }
+
+        public override string ToString()
+        {
+            return $"{CreateResult} ({GetHashCode()})";
         }
 
         private void AssertCanEvaluate()

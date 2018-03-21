@@ -3,13 +3,13 @@ using System.Linq.Expressions;
 
 namespace DecisionTree
 {
-    public class DecisionQuery<TInput, TOutput> : Decision<TInput, TOutput>
+    public class DecisionQuery<TIn, TOut> : Decision<TIn, TOut>
     {
-        public Expression<Func<TInput, bool>> Test { get; set; }
-        public Decision<TInput, TOutput> Positive { get; set; }
-        public Decision<TInput, TOutput> Negative { get; set; }
+        public Expression<Func<TIn, bool>> Test { get; set; }
+        public Decision<TIn, TOut> Positive { get; set; }
+        public Decision<TIn, TOut> Negative { get; set; }
 
-        public override TOutput Evaluate(TInput input)
+        public override TOut Evaluate(TIn input)
         {
             AssertCanEvaluate();
 
@@ -21,7 +21,7 @@ namespace DecisionTree
                 return Negative.Evaluate(input);
         }
         
-        public override Tuple<TOutput, DecisionPath> EvaluateWithPath(TInput input, DecisionPath decisionPath)
+        public override Tuple<TOut, DecisionPath> EvaluateWithPath(TIn input, DecisionPath decisionPath)
         {
             AssertCanEvaluate();
 
@@ -34,15 +34,20 @@ namespace DecisionTree
                 return Negative.EvaluateWithPath(input, decisionPath);
         }
 
-        public override void Accept(IDecisionVisitor<TInput, TOutput> visitor)
+        public override void Accept(IDecisionVisitor<TIn, TOut> visitor)
         {
             visitor.Visit(this);
         }
 
-        private bool GetResult(TInput input)
+        private bool GetResult(TIn input)
         {
             var test = Test.Compile();
             return test.Invoke(input);
+        }
+
+        public override string ToString()
+        {
+            return $"{Test} ({GetHashCode()})";
         }
 
         private void AssertCanEvaluate()

@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Decision.cs" />
+    <Compile Include="DecisionBuilder.cs" />
     <Compile Include="DecisionException.cs" />
     <Compile Include="DecisionPath.cs" />
     <Compile Include="DecisionQuery.cs" />

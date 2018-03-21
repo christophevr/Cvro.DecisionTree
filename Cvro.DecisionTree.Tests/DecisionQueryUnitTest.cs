@@ -12,15 +12,15 @@ namespace DecisionTree.Tests
         public void Evaluate_GivenPositiveTest_EvaluatesPositive()
         {
             // GIVEN
-            var positiveDecision = new Mock<Decision<SampleInput, SampleOutput>>();
-            var negativeDecision = new Mock<Decision<SampleInput, SampleOutput>>();
-            var decisionQuery = new DecisionQuery<SampleInput, SampleOutput>
+            var positiveDecision = new Mock<Decision<EmployeeInfo, BonusCalculation>>();
+            var negativeDecision = new Mock<Decision<EmployeeInfo, BonusCalculation>>();
+            var decisionQuery = new DecisionQuery<EmployeeInfo, BonusCalculation>
             {
                 Test = _ => true,
                 Positive = positiveDecision.Object,
                 Negative = negativeDecision.Object
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
 
             // WHEN
             decisionQuery.Evaluate(input);
@@ -34,15 +34,15 @@ namespace DecisionTree.Tests
         public void Evaluate_GivenNegativeTest_EvaluatesNegative()
         {
             // GIVEN
-            var positiveDecision = new Mock<Decision<SampleInput, SampleOutput>>();
-            var negativeDecision = new Mock<Decision<SampleInput, SampleOutput>>();
-            var decisionQuery = new DecisionQuery<SampleInput, SampleOutput>
+            var positiveDecision = new Mock<Decision<EmployeeInfo, BonusCalculation>>();
+            var negativeDecision = new Mock<Decision<EmployeeInfo, BonusCalculation>>();
+            var decisionQuery = new DecisionQuery<EmployeeInfo, BonusCalculation>
             {
                 Test = _ => false,
                 Positive = positiveDecision.Object,
                 Negative = negativeDecision.Object
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
 
             // WHEN
             decisionQuery.Evaluate(input);
@@ -56,15 +56,15 @@ namespace DecisionTree.Tests
         public void Evaluate_GivenNullTest_Throws()
         {
             // GIVEN
-            var positiveDecision = new Mock<Decision<SampleInput, SampleOutput>>();
-            var negativeDecision = new Mock<Decision<SampleInput, SampleOutput>>();
-            var decisionQuery = new DecisionQuery<SampleInput, SampleOutput>
+            var positiveDecision = new Mock<Decision<EmployeeInfo, BonusCalculation>>();
+            var negativeDecision = new Mock<Decision<EmployeeInfo, BonusCalculation>>();
+            var decisionQuery = new DecisionQuery<EmployeeInfo, BonusCalculation>
             {
                 Test = null,
                 Positive = positiveDecision.Object,
                 Negative = negativeDecision.Object
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
 
             // WHEN THEN
             Assert.Throws<DecisionException>(() => decisionQuery.Evaluate(input), "'Test' cannot be null");
@@ -74,14 +74,14 @@ namespace DecisionTree.Tests
         public void Evaluate_GivenNullPositive_Throws()
         {
             // GIVEN
-            var negativeDecision = new Mock<Decision<SampleInput, SampleOutput>>();
-            var decisionQuery = new DecisionQuery<SampleInput, SampleOutput>
+            var negativeDecision = new Mock<Decision<EmployeeInfo, BonusCalculation>>();
+            var decisionQuery = new DecisionQuery<EmployeeInfo, BonusCalculation>
             {
                 Test = _ => true,
                 Positive = null,
                 Negative = negativeDecision.Object
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
 
             // WHEN THEN
             Assert.Throws<DecisionException>(() => decisionQuery.Evaluate(input), "'Positive' cannot be null");
@@ -91,14 +91,14 @@ namespace DecisionTree.Tests
         public void Evaluate_GivenNullNegative_Throws()
         {
             // GIVEN
-            var positiveDecision = new Mock<Decision<SampleInput, SampleOutput>>();
-            var decisionQuery = new DecisionQuery<SampleInput, SampleOutput>
+            var positiveDecision = new Mock<Decision<EmployeeInfo, BonusCalculation>>();
+            var decisionQuery = new DecisionQuery<EmployeeInfo, BonusCalculation>
             {
                 Test = _ => true,
                 Positive = positiveDecision.Object,
                 Negative = null
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
 
             // WHEN THEN
             Assert.Throws<DecisionException>(() => decisionQuery.Evaluate(input), "'Positive' cannot be null");
@@ -108,13 +108,13 @@ namespace DecisionTree.Tests
         public void EvaluateWithPath_GivenPositiveTest_ReturnsExpectedPath()
         {
             // GIVEN
-            var decisionQuery = new DecisionQuery<SampleInput, SampleOutput>
+            var decisionQuery = new DecisionQuery<EmployeeInfo, BonusCalculation>
             {
                 Test = _ => true,
-                Positive = new DecisionResult<SampleInput, SampleOutput> { CreateResult = _ => new SampleOutput() },
-                Negative = new DecisionResult<SampleInput, SampleOutput> { CreateResult = _ => new SampleOutput() }
+                Positive = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = _ => new BonusCalculation() },
+                Negative = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = _ => new BonusCalculation() }
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
 
             // WHEN
             var result = decisionQuery.EvaluateWithPath(input);
@@ -128,13 +128,13 @@ namespace DecisionTree.Tests
         public void EvaluateWithPath_GivenNegativeTest_ReturnsExpectedPath()
         {
             // GIVEN
-            var decisionQuery = new DecisionQuery<SampleInput, SampleOutput>
+            var decisionQuery = new DecisionQuery<EmployeeInfo, BonusCalculation>
             {
                 Test = _ => false,
-                Positive = new DecisionResult<SampleInput, SampleOutput> { CreateResult = _ => new SampleOutput() },
-                Negative = new DecisionResult<SampleInput, SampleOutput> { CreateResult = _ => new SampleOutput() }
+                Positive = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = _ => new BonusCalculation() },
+                Negative = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = _ => new BonusCalculation() }
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
 
             // WHEN
             var result = decisionQuery.EvaluateWithPath(input);

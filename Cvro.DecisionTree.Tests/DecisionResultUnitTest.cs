@@ -10,11 +10,11 @@ namespace DecisionTree.Tests
         public void Evaluate_GivenNullCreateResult_Throws()
         {
             // GIVEN
-            var decisionResult = new DecisionResult<SampleInput, SampleOutput>
+            var decisionResult = new DecisionResult<EmployeeInfo, BonusCalculation>
             {
                 CreateResult = null
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
 
             // WHEN THEN
             Assert.Throws<DecisionException>(() => decisionResult.Evaluate(input), "'CreateResult' cannot be null");
@@ -24,12 +24,12 @@ namespace DecisionTree.Tests
         public void Evaluate_CreatesExpectedResult()
         {
             // GIVEN
-            var output = new SampleOutput();
-            var decisionResult = new DecisionResult<SampleInput, SampleOutput>
+            var output = new BonusCalculation();
+            var decisionResult = new DecisionResult<EmployeeInfo, BonusCalculation>
             {
                 CreateResult = sampleInput => output
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
 
             // WHEN
             var actualOutput = decisionResult.Evaluate(input);
@@ -42,12 +42,12 @@ namespace DecisionTree.Tests
         public void EvaluateWithPath_GivenPath_ReturnsExpectedPath()
         {
             // GIVEN
-            var output = new SampleOutput();
-            var decisionResult = new DecisionResult<SampleInput, SampleOutput>
+            var output = new BonusCalculation();
+            var decisionResult = new DecisionResult<EmployeeInfo, BonusCalculation>
             {
                 CreateResult = sampleInput => output
             };
-            var input = new SampleInput();
+            var input = new EmployeeInfo();
             var decisionPath = new DecisionPath();
 
             // WHEN

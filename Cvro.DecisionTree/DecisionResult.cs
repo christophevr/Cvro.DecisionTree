@@ -28,7 +28,7 @@ namespace DecisionTree
 
         public override string ToString()
         {
-            return $"{CreateResult} [{HashHelper.CalculateShortHash(CreateResult.ToString())}]";
+            return $"{CreateResult} [{GetHashCode()}]";
         }
 
         private void AssertCanEvaluate()

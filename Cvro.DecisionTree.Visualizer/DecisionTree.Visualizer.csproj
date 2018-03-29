@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DecisionExtensions.cs" />
     <Compile Include="DecisionGraphBuilder.cs" />
+    <Compile Include="DecisionPathVisualizerVisitor.cs" />
     <Compile Include="DecisionVisualizerVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

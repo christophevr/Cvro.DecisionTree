@@ -13,23 +13,45 @@ namespace DecisionTree.Visualizer.Tests
         public void RenderToString_ReturnsNotEmptyString()
         {
             // GIVEN
-            var decisionTree = new DecisionQuery<EmployeeInfo, BonusCalculation>
-            {
-                Test = employee => employee.YearsEmployed < 5,
-                Positive = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = employee => new BonusCalculation { Bonus = employee.YearsEmployed * 100 } },
-                Negative = new DecisionQuery<EmployeeInfo, BonusCalculation>
-                {
-                    Test = employee => employee.YearsEmployed < 10,
-                    Positive = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = employee => new BonusCalculation { Bonus = employee.YearsEmployed * 200M } },
-                    Negative = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = employee => new BonusCalculation { Bonus = employee.YearsEmployed * 300M } }
-                }
-            };
+            var decisionTree = new DecisionBuilder<EmployeeInfo, BonusCalculation>()
+                .WithTest(employee => employee.YearsEmployed < 5)
+                .WithPositiveResult(employee => new BonusCalculation {Bonus = employee.YearsEmployed * 100})
+                .WithNegativeQuery(negativeQuery => negativeQuery
+                    .WithTest(employee => employee.YearsEmployed < 10)
+                    .WithPositiveResult(employee => new BonusCalculation { Bonus = employee.YearsEmployed * 200M })
+                    .WithNegativeResult(employee => new BonusCalculation { Bonus = employee.YearsEmployed * 300M }))
+                .Build();
 
             // WHEN
             var graph = decisionTree.RenderToString();
 
             // THEN
             graph.Should().NotBeNullOrEmpty();   
+        }
+
+
+        [Test]
+        public void RenderToString_WithDecisionPath_ReturnsNotEmptyString()
+        {
+            // GIVEN
+            var path = new DecisionPath();
+            path.AddStep(false);
+            path.AddStep(true);
+
+            var decisionTree = new DecisionBuilder<EmployeeInfo, BonusCalculation>()
+                .WithTest(employee => employee.YearsEmployed < 5)
+                .WithPositiveResult(employee => new BonusCalculation { Bonus = employee.YearsEmployed * 100 })
+                .WithNegativeQuery(negativeQuery => negativeQuery
+                    .WithTest(employee => employee.YearsEmployed < 10)
+                    .WithPositiveResult(employee => new BonusCalculation { Bonus = employee.YearsEmployed * 200M })
+                    .WithNegativeResult(employee => new BonusCalculation { Bonus = employee.YearsEmployed * 300M }))
+                .Build();
+
+            // WHEN
+            var graph = decisionTree.RenderToString(path);
+
+            // THEN
+            graph.Should().NotBeNullOrEmpty();
         }
     }
 }

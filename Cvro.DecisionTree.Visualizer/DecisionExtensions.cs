@@ -9,5 +9,14 @@
 
             return visitor.RenderToGraphviz();
         }
+
+        public static string RenderToString<TIn, TOut>(this Decision<TIn, TOut> decision, DecisionPath decisionPath)
+        {
+            var visitor = new DecisionPathVisualizerVisitor<TIn, TOut>(decisionPath);
+            decision.Accept(visitor);
+
+            return visitor.RenderToGraphviz();
+        }
+
     }
 }

@@ -4,14 +4,14 @@ using Shields.GraphViz.Models;
 
 namespace DecisionTree.Visualizer
 {
-    public class DecisionGraphBuilder<TInput, TOutput>
+    public class DecisionGraphBuilder<TIn, TOut>
     {
         public Graph Graph { get; protected set; } = Graph.Directed;
 
-        public void AddNegativeEdgeStatement(DecisionQuery<TInput, TOutput> decision, bool thickLine = false)
+        public void AddNegativeEdgeStatement(Decision<TIn, TOut> decision, Decision<TIn, TOut> negativeDecision, bool thickLine = false)
         {
             var fromNode = decision.ToString();
-            var toNode = decision.Negative.ToString();
+            var toNode = negativeDecision.ToString();
             var properties = new Dictionary<Id, Id>
             {
                 { "label", false.ToString() },
@@ -23,10 +23,10 @@ namespace DecisionTree.Visualizer
 
             Graph = Graph.Add(new EdgeStatement(fromNode, toNode, properties.ToImmutableDictionary()));
         }
-        public void AddPositiveEdgeStatement(DecisionQuery<TInput, TOutput> decision, bool thickLine = false)
+        public void AddPositiveEdgeStatement(Decision<TIn, TOut> decision, Decision<TIn, TOut> positiveDecision, bool thickLine = false)
         {
             var fromNode = decision.ToString();
-            var toNode = decision.Positive.ToString();
+            var toNode = positiveDecision.ToString();
             var properties = new Dictionary<Id, Id>
             {
                 { "label", true.ToString() },
@@ -39,7 +39,7 @@ namespace DecisionTree.Visualizer
             Graph = Graph.Add(new EdgeStatement(fromNode, toNode, properties.ToImmutableDictionary()));
         }
         
-        public void AddResultNodeStatement(DecisionResult<TInput, TOutput> decision, string fillColor)
+        public void AddResultNodeStatement(DecisionResult<TIn, TOut> decision, string fillColor)
         {
             var node = decision.ToString();
             var properties = new Dictionary<Id, Id>

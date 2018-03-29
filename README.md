@@ -1,5 +1,7 @@
 # DecisionTree
-An intuitive, lightweight decision tree with built-in visualization
+[![Build status](https://ci.appveyor.com/api/projects/status/607lif1gkfydoy9i?svg=true)](https://ci.appveyor.com/project/christophevr/decisiontree)
+
+An intuitive, lightweight decision tree with built-in visualization to [DOT language](https://en.wikipedia.org/wiki/DOT_language)
 
 Code sample:
 ```

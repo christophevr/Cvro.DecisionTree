@@ -1,22 +1,44 @@
 # DecisionTree
-An intuitive, lightweight decision tree with built-in visualization
+[![Build status](https://ci.appveyor.com/api/projects/status/607lif1gkfydoy9i?svg=true)](https://ci.appveyor.com/project/christophevr/decisiontree)
 
-Code sample:
+An intuitive, lightweight decision tree with built-in visualization to [DOT language](https://en.wikipedia.org/wiki/DOT_language)
+
+## Code sample
 ```
-var decisionTree = new DecisionQuery<EmployeeInfo, BonusCalculation>
-{
-	Test = employee => employee.YearsEmployed < 5,
-	Positive = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = employee => new BonusCalculation { Bonus = employee.YearsEmployed * 100 } },
-	Negative = new DecisionQuery<EmployeeInfo, BonusCalculation>
-	{
-		Test = employee => employee.YearsEmployed < 10,
-		Positive = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = employee => new BonusCalculation { Bonus = employee.YearsEmployed * 200M } },
-		Negative = new DecisionResult<EmployeeInfo, BonusCalculation> { CreateResult = employee => new BonusCalculation { Bonus = employee.YearsEmployed * 300M } }
-	}
-};
+// Build decision tree
+var employeeBonusCalculator = new DecisionBuilder<EmployeeInfo, decimal>()
+    .WithTest(employee => employee.YearsEmployed < 5)
+    .WithPositiveResult(employee => employee.YearsEmployed * 100M)
+    .WithNegativeQuery(negativeQuery => negativeQuery
+        .WithTest(employee => employee.YearsEmployed < 10)
+        .WithPositiveResult(employee => employee.YearsEmployed * 200M)
+        .WithNegativeResult(employee => employee.YearsEmployed * 300M))
+    .Build();
 
-var graph = decisionTree.RenderToString();
+// Create input
+var bob = new EmployeeInfo {YearsEmployed = 7};
+
+// Evaluate tree for output
+decimal bonusForBob = employeeBonusCalculator.Evaluate(bob); // Result: 1,400
 ```
 
+## Visualization
+Renders a decision tree to DOT language. Can be visualized with a library like [Viz.js](http://viz-js.com/) or [Webgraphviz](http://www.webgraphviz.com/)
+```
+string render = employeeBonusCalculator.RenderToString();
+```
 Image render:
-![Diagram](https://i.imgur.com/j7KHMt8.png)
+![Diagram](https://i.imgur.com/rExuhZN.png)
+
+## Path tracing
+Can return a trace of the path followed
+```
+var result = employeeBonusCalculator.EvaluateWithPath(bob);
+decimal bonusForBob = result.Result;
+DecisionPath path = result.DecisionPath;
+
+// Visualize path
+string render = employeeBonusCalculator.RenderToString(path);
+```
+Image render:
+![Diagram](https://i.imgur.com/JKe90sT.png)

@@ -7,8 +7,8 @@ namespace DecisionTree
     {
         public abstract TOut Evaluate(TIn input);
         public abstract void Accept(IDecisionVisitor<TIn, TOut> visitor);
-        public abstract Tuple<TOut, DecisionPath> EvaluateWithPath(TIn input, DecisionPath decisionPath);
-        public virtual Tuple<TOut, DecisionPath> EvaluateWithPath(TIn input)
+        public abstract DecisionResultWithPath<TOut> EvaluateWithPath(TIn input, DecisionPath decisionPath);
+        public virtual DecisionResultWithPath<TOut> EvaluateWithPath(TIn input)
         {
             return EvaluateWithPath(input, new DecisionPath());
         }

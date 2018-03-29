@@ -15,7 +15,7 @@ namespace DecisionTree.Visualizer.Tests
             // GIVEN
             var decisionTree = new DecisionBuilder<EmployeeInfo, BonusCalculation>()
                 .WithTest(employee => employee.YearsEmployed < 5)
-                .WithPositiveResult(employee => new BonusCalculation {Bonus = employee.YearsEmployed * 100})
+                .WithPositiveResult(employee => new BonusCalculation { Bonus = employee.YearsEmployed * 100 })
                 .WithNegativeQuery(negativeQuery => negativeQuery
                     .WithTest(employee => employee.YearsEmployed < 10)
                     .WithPositiveResult(employee => new BonusCalculation { Bonus = employee.YearsEmployed * 200M })
@@ -26,7 +26,7 @@ namespace DecisionTree.Visualizer.Tests
             var graph = decisionTree.RenderToString();
 
             // THEN
-            graph.Should().NotBeNullOrEmpty();   
+            graph.Should().NotBeNullOrEmpty();
         }
 
 

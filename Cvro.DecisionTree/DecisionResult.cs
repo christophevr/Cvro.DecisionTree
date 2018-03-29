@@ -15,10 +15,10 @@ namespace DecisionTree
             return createResult.Invoke(input);
         }
 
-        public override Tuple<TOut, DecisionPath> EvaluateWithPath(TIn input, DecisionPath decisionPath)
+        public override DecisionResultWithPath<TOut> EvaluateWithPath(TIn input, DecisionPath decisionPath)
         {
             var output = Evaluate(input);
-            return new Tuple<TOut, DecisionPath>(output, decisionPath);
+            return new DecisionResultWithPath<TOut>(output, decisionPath);
         }
 
         public override void Accept(IDecisionVisitor<TIn, TOut> visitor)

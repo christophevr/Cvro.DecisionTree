@@ -120,8 +120,8 @@ namespace DecisionTree.Tests
             var result = decisionQuery.EvaluateWithPath(input);
 
             // THEN
-            result.Item2.Path.Should().HaveCount(1);
-            result.Item2.Path.Single().Should().BeTrue();
+            result.DecisionPath.Path.Should().HaveCount(1);
+            result.DecisionPath.Path.Single().Should().BeTrue();
         }
 
         [Test]
@@ -140,8 +140,8 @@ namespace DecisionTree.Tests
             var result = decisionQuery.EvaluateWithPath(input);
 
             // THEN
-            result.Item2.Path.Should().HaveCount(1);
-            result.Item2.Path.Single().Should().BeFalse();
+            result.DecisionPath.Path.Should().HaveCount(1);
+            result.DecisionPath.Path.Single().Should().BeFalse();
         }
     }
 

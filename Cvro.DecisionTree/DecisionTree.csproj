@@ -41,6 +41,7 @@
     <Compile Include="DecisionPath.cs" />
     <Compile Include="DecisionQuery.cs" />
     <Compile Include="DecisionResult.cs" />
+    <Compile Include="DecisionResultWithPath.cs" />
     <Compile Include="IDecisionVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

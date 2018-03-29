@@ -54,7 +54,7 @@ namespace DecisionTree.Tests
             var result = decisionResult.EvaluateWithPath(input, decisionPath);
 
             // THEN
-            result.Item2.Should().Be(decisionPath);
+            result.DecisionPath.Should().Be(decisionPath);
         }
     }
 }

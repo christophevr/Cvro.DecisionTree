@@ -21,7 +21,7 @@ namespace DecisionTree
                 return Negative.Evaluate(input);
         }
         
-        public override Tuple<TOut, DecisionPath> EvaluateWithPath(TIn input, DecisionPath decisionPath)
+        public override DecisionResultWithPath<TOut> EvaluateWithPath(TIn input, DecisionPath decisionPath)
         {
             AssertCanEvaluate();
 

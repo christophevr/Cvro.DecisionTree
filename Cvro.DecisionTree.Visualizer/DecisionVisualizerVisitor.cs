@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Text;
+using Microsoft.Msagl.Core.Layout;
+using Microsoft.Msagl.Drawing;
+using Microsoft.Msagl.GraphViewerGdi;
+using Shields.GraphViz.Components;
 
 namespace DecisionTree.Visualizer
 {
     public class DecisionVisualizerVisitor<TIn, TOut> : IDecisionVisitor<TIn, TOut>
     {
-        protected readonly DecisionGraphBuilder<TIn, TOut> GraphBuilder = new DecisionGraphBuilder<TIn, TOut>();
-        
+        protected readonly MsaglDecisionGraphBuilder<TIn, TOut> GraphBuilder = new MsaglDecisionGraphBuilder<TIn, TOut>();
+
         public virtual void Visit(DecisionQuery<TIn, TOut> decisionQuery)
         {
             GraphBuilder.AddPositiveEdgeStatement(decisionQuery, decisionQuery.Positive);
@@ -23,23 +28,17 @@ namespace DecisionTree.Visualizer
             GraphBuilder.AddResultNodeStatement(decisionResult, fillColor);
         }
 
-
-        public string RenderToGraphviz()
+        public void RenderToImage(Image image)
         {
-            using (var stream = new MemoryStream())
-            {
-                using (var streamWriter = new StreamWriter(stream, Encoding.Unicode, 1024, leaveOpen: true))
-                {
-                    GraphBuilder.Graph.WriteTo(streamWriter);
-                }
+            var renderer = new GraphRenderer(GraphBuilder.Graph);
+            renderer.CalculateLayout();
+            renderer.Render(image);
+        }
 
-                stream.Seek(0, SeekOrigin.Begin);
-
-                using (var streamReader = new StreamReader(stream, Encoding.Unicode))
-                {
-                    return streamReader.ReadToEnd();
-                }
-            }
+        public void RenderToSvg(Stream svgStream)
+        {
+            var writer = new SvgGraphWriter(svgStream, GraphBuilder.Graph);
+            writer.Write();
         }
     }
 }

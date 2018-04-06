@@ -13,7 +13,7 @@ namespace DecisionTree.Visualizer.Tests
         public void RenderToString_ReturnsNotEmptyString()
         {
             // GIVEN
-            var decisionTree = new DecisionBuilder<EmployeeInfo, BonusCalculation>()
+            var decisionTree = new DecisionQueryBuilder<EmployeeInfo, BonusCalculation>()
                 .WithTest(employee => employee.YearsEmployed < 5)
                 .WithPositiveResult(employee => new BonusCalculation { Bonus = employee.YearsEmployed * 100 })
                 .WithNegativeQuery(negativeQuery => negativeQuery
@@ -38,7 +38,7 @@ namespace DecisionTree.Visualizer.Tests
             path.AddStep(false);
             path.AddStep(true);
 
-            var decisionTree = new DecisionBuilder<EmployeeInfo, BonusCalculation>()
+            var decisionTree = new DecisionQueryBuilder<EmployeeInfo, BonusCalculation>()
                 .WithTest(employee => employee.YearsEmployed < 5)
                 .WithPositiveResult(employee => new BonusCalculation { Bonus = employee.YearsEmployed * 100 })
                 .WithNegativeQuery(negativeQuery => negativeQuery

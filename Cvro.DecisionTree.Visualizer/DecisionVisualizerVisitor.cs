@@ -24,7 +24,7 @@ namespace DecisionTree.Visualizer
         }
 
 
-        public string RenderToGraphviz()
+        public string RenderToDotLanguage()
         {
             using (var stream = new MemoryStream())
             {

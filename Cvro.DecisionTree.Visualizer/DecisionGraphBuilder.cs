@@ -10,8 +10,8 @@ namespace DecisionTree.Visualizer
 
         public void AddNegativeEdgeStatement(Decision<TIn, TOut> decision, Decision<TIn, TOut> negativeDecision, bool thickLine = false)
         {
-            var fromNode = decision.ToString();
-            var toNode = negativeDecision.ToString();
+            var fromNode = $"{decision} [{decision.GetHashCode()}]";
+            var toNode = $"{negativeDecision} [{decision.GetHashCode()}]";
             var properties = new Dictionary<Id, Id>
             {
                 { "label", false.ToString() },
@@ -25,8 +25,8 @@ namespace DecisionTree.Visualizer
         }
         public void AddPositiveEdgeStatement(Decision<TIn, TOut> decision, Decision<TIn, TOut> positiveDecision, bool thickLine = false)
         {
-            var fromNode = decision.ToString();
-            var toNode = positiveDecision.ToString();
+            var fromNode = $"{decision} [{decision.GetHashCode()}]";
+            var toNode = $"{positiveDecision} [{decision.GetHashCode()}]";
             var properties = new Dictionary<Id, Id>
             {
                 { "label", true.ToString() },
@@ -41,7 +41,7 @@ namespace DecisionTree.Visualizer
         
         public void AddResultNodeStatement(DecisionResult<TIn, TOut> decision, string fillColor)
         {
-            var node = decision.ToString();
+            var node = $"{decision} [{decision.GetHashCode()}]";
             var properties = new Dictionary<Id, Id>
             {
                 { "fillcolor", fillColor},

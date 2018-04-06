@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\DecisionTree.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Decision.cs" />
-    <Compile Include="DecisionBuilder.cs" />
+    <Compile Include="DecisionQueryBuilder.cs" />
     <Compile Include="DecisionException.cs" />
     <Compile Include="DecisionPath.cs" />
     <Compile Include="DecisionQuery.cs" />

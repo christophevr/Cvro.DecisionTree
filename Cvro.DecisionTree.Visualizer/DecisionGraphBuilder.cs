@@ -4,7 +4,7 @@ using Shields.GraphViz.Models;
 
 namespace DecisionTree.Visualizer
 {
-    public class DecisionGraphBuilder<TIn, TOut>
+    internal class DecisionGraphBuilder<TIn, TOut>
     {
         public Graph Graph { get; protected set; } = Graph.Directed;
 

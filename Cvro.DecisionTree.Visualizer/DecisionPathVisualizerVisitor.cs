@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace DecisionTree.Visualizer
 {
-    public class DecisionPathVisualizerVisitor<TIn, TOut> : DecisionVisualizerVisitor<TIn, TOut>
+    internal class DecisionPathVisualizerVisitor<TIn, TOut> : DecisionVisualizerVisitor<TIn, TOut>
     {
         private readonly Stack<bool> _pathStack;
         private Decision<TIn, TOut> _nextDecisionInPath;

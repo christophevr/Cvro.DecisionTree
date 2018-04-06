@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 
 namespace DecisionTree.Visualizer
 {
-    public class DecisionVisualizerVisitor<TIn, TOut> : IDecisionVisitor<TIn, TOut>
+    internal class DecisionVisualizerVisitor<TIn, TOut> : IDecisionVisitor<TIn, TOut>
     {
         protected readonly DecisionGraphBuilder<TIn, TOut> GraphBuilder = new DecisionGraphBuilder<TIn, TOut>();
         
